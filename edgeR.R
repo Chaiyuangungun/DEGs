@@ -1,8 +1,8 @@
 library( "edgeR" )
 # 读取数据
-counts <- read.table("JMZ_F5", sep = "\t", header = T, row.names = 1)
+counts <- read.table("input.counts", sep = "\t", header = T, row.names = 1)
 # 创建分组
-group <- c(rep(1,3),rep(2,3))
+group <- c(rep(1,3),rep(2,3))#edgeR要求重复，这里设置为分组1为前三个，分组2为后三个，可以自己设置分组
 #去除批次效应
 #batch <- c(rep("1",3),rep("2",3))
 #counts <- removeBatchEffect(counts, batch)
@@ -31,4 +31,4 @@ etSig <- et[which(et$PValue < 0.05 & abs(et$log2FoldChange) > 1),]
 etSig[which(etSig$log2FoldChange > 0), "up_down"] <- "Up"
 etSig[which(etSig$log2FoldChange < 0), "up_down"] <- "Down"
 # 保存文件
-write.table(etSig, "JMZ_F1.gene.xls", sep = "\t",col.names = TRUE, row.names = FALSE, quote = FALSE, na = "")
+write.table(etSig, "out.gene.xls", sep = "\t",col.names = TRUE, row.names = FALSE, quote = FALSE, na = "")
