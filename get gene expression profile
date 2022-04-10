@@ -1,4 +1,4 @@
- import argparse
+import argparse
 
 def get_genome_file(name_file):
     file_names = []
@@ -22,7 +22,7 @@ def get_gene_counts_FPKMs(file_names):
                 counts = int(lines[-3])
                 FPKMs = float(lines[-1])
                 expression_file["counts"][file][gene_id] = counts
-                expression_file["counts"][file][FPKMs] = counts
+                expression_file["counts"][file][FPKMs] = FPKMs
                 gene_ids.append(gene_id)
     gene_ids = list(set(gene_id))
     return gene_ids,expression_file
