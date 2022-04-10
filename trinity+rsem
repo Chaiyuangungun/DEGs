@@ -1,0 +1,6 @@
+#计算表达量
+/share/home/stu_chaikun/biosoft/trinityrnaseq-v2.13.2/util/align_and_estimate_abundance.pl\
+ --transcripts \##参考基因组或者cds文件
+ --seqType fq --left --right \#过滤后的成对的双端文件
+ --gene_trans_map  --thread_count 10\#genemap get_map.py生成
+ --est_method RSEM --output_dir  --aln_method bowtie2 --prep_reference #输出目录
