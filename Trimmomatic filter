@@ -1,5 +1,5 @@
-trimmomatic PE -phred33 /share/home/stu_chaikun/data/RNA_seq/JMZ-1_1.fq.gz /share/home/stu_chaikun/data/RNA_seq/JMZ-1_2.fq.gz\
- JMZ-1_1.paired.fq.gz JMZ-1_1.unpaired.fq.gz\
- JMZ-1_2.paired.fq.gz JMZ-1_2.unpaired.fq.gz\
+trimmomatic PE -phred33 seq_R1.fq.gz seq_R2.fq.gz\
+ seq_R1.paired.fq.gz seq_R1.unpaired.fq.gz\
+ seq_R2.paired.fq.gz seq_R2.unpaired.fq.gz\
  ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36\ 
  -threads 10
