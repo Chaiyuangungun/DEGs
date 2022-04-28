@@ -21,12 +21,12 @@ def get_gene_counts_FPKMs(file_names):
                 if lines[0] == "gene_id":
                     continue
                 gene_id = lines[0]
-                counts = int(lines[-3])
+                counts = int(float(lines[-3]))
                 FPKMs = float(lines[-1])
-                expression_file["counts"][file][gene_id] = counts
-                expression_file["counts"][file][FPKMs] = FPKMs
+                expression_file["counts"][file][gene_id] = str(counts)
+                expression_file["FPKMs"][file][gene_id] = str(FPKMs)
                 gene_ids.append(gene_id)
-    gene_ids = list(set(gene_id))
+    gene_ids = list(set(gene_ids))
     return gene_ids,expression_file
 
 def write_out_file(gene_ids,expression_file,out_file):
@@ -38,7 +38,7 @@ def write_out_file(gene_ids,expression_file,out_file):
         for id in gene_ids:
             f1.write(id+"\t")
             for file in expression_file["counts"]:
-                f1.write(str(expression_file["counts"][id])+"\t")
+                f1.write(str(expression_file["counts"][file][id])+"\t")
             f1.write("\n")
     with open(out_file+".FPKMs","w") as f2:
         f2.write("Gene_id"+"\t")
@@ -48,7 +48,7 @@ def write_out_file(gene_ids,expression_file,out_file):
         for id in gene_ids:
             f2.write(id+"\t")
             for file in expression_file["FPKMs"]:
-                f2.write(str(expression_file["FPKMs"][id])+"\t")
+                f2.write(str(expression_file["FPKMs"][file][id])+"\t")
             f2.write("\n")    
 
 parser = argparse.ArgumentParser(description='manual to this script')
