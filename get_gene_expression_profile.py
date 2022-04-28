@@ -18,6 +18,8 @@ def get_gene_counts_FPKMs(file_names):
         with open(file,"r") as f1:
             for line in f1:
                 lines = line.strip().split()
+                if lines[0] == "gene_id":
+                    continue
                 gene_id = lines[0]
                 counts = int(lines[-3])
                 FPKMs = float(lines[-1])
